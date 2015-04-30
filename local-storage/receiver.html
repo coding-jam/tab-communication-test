@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Receiver</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.4/custom/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href="../css/bootstrap-theme.min.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>localStorage Receiver</h1>
+        </div>
+    </div>
+    <div class="row well">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    Message received:
+                    <ul id="message"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    window.addEventListener("storage", receiveMessage, true);
+
+    function receiveMessage(event) {
+        console.log(event);
+        $('#message').append('<li>' + moment().format('YYYY-MM-DD HH:mm:ss.SSS') + ': ' + event.newValue + ', key: ' + event.key + '</li>');
+        if (localStorage.getItem(event.key)) {
+            localStorage.removeItem(event.key); //unico modo per notificare, cose strane se ho aperto 2 tab
+        }
+    }
+</script>
+</body>
+</html>
