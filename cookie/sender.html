@@ -60,7 +60,6 @@
             expires: moment().add(moment().utcOffset() / 60, 'h').add(5, 'seconds').toDate() //added utc offset because is converted to toUTCString
         };
 
-        var tab;
         $('#send').click(function (e) {
             e.preventDefault();
 
@@ -79,7 +78,7 @@
             }, 1000);
         });
         $('#open-tab').click(function () {
-            tab = window.open('receiver.html');
+            window.open('receiver.html');
         });
 
     });
