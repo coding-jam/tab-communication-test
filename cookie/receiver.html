@@ -41,7 +41,7 @@
         if (cookie) {
             Cookies.remove('message');
             $('#message').append('<li>' + moment().format('YYYY-MM-DD HH:mm:ss.SSS') + ': ' + cookie.message + '</li>');
-            Cookies.set('replay', 'Received ' + cookie.message);
+            Cookies.set('reply', 'Received ' + cookie.message);
         }
     }, 1000);
 
